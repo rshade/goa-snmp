@@ -1,4 +1,4 @@
-module github.com/rshade/goa-snmp
+module github.com/rshade/goasnmp
 
 go 1.15
 
