@@ -1,4 +1,4 @@
-package main
+package walk
 
 //https://raw.githubusercontent.com/gosnmp/gosnmp/master/examples/walktcpexample/main.go
 import (

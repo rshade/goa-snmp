@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/gosnmp/gosnmp v1.30.0 // indirect
 	goa.design/goa/v3 v3.2.6
+	goa.design/plugins/v3 v3.2.6
 	golang.org/x/mod v0.4.1 // indirect
 	golang.org/x/net v0.0.0-20210222171744-9060382bd457 // indirect
 	golang.org/x/sys v0.0.0-20210223212115-eede4237b368 // indirect
