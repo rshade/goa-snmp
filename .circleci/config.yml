@@ -25,8 +25,8 @@ jobs:
       - run: go get -v -t -d ./...
       - run: go test -v ./...
   ui:
-    orbs:
-      node: circleci/node@3.0.0
+    docker:
+      image: circleci/node:15
     working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
     steps:
       - checkout
