@@ -11,6 +11,7 @@ type InterfaceHost struct {
 	Href     string `json:"href"`
 }
 
+//SnmpHost is a host to be walked
 var SnmpHost = ResultType("application/vnd.goasnmp.host", func() {
 	TypeName("Host")
 	Description("Host to be queried")

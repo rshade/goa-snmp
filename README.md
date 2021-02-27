@@ -1,6 +1,7 @@
 # goa-snmp
 
 Goa micro service for snmp
+[![CircleCI](https://circleci.com/github/rshade/goasnmp.svg?style=svg)](https://circleci.com/github/rshade/goasnmp)
 
 ## Design
 
