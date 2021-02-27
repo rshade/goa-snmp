@@ -27,7 +27,13 @@ jobs:
   ui:
     orbs:
       node: circleci/node@3.0.0
-    workflows:
-      node-tests:
-        jobs:
-          - node/test
+    working_directory: /go/src/github.com/{{ORG_NAME}}/{{REPO_NAME}}
+    steps:
+      - checkout
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - ui
