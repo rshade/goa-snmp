@@ -1,9 +1,9 @@
 package design
 
 import (
+	media_type "github.com/rshade/goasnmp/design/media_type"
 	. "goa.design/goa/v3/dsl"
 	_ "goa.design/plugins/v3/goakit"
-	media_type "github.com/rshade/goasnmp/design/media_type"
 )
 
 var _ = API("goasnmp", func() {
@@ -15,7 +15,7 @@ var _ = Service("goasnmp", func() {
 	Description("The goa-snmp service tracks hosts and walks snmp trees")
 
 	Method("list", func() {
-		Result(CollectionOf(media_type.Host))
+		Result(CollectionOf(media_type.SnmpHost))
 		HTTP(func() {
 			GET("/hosts")
 		})
@@ -29,7 +29,7 @@ var _ = Service("goasnmp", func() {
 			Required("Hostname", "Public")
 		})
 
-		Result(media_type.Host)
+		Result(media_type.SnmpHost)
 
 		HTTP(func() {
 			POST("/hosts/{Hostname}")
