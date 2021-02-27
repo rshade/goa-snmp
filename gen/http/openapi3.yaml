@@ -5,14 +5,14 @@ info:
   version: "1.0"
 servers:
 - url: http://localhost:80
-  description: Default server for goa-snmp
+  description: Default server for goasnmp
 paths:
   /hosts:
     get:
       tags:
-      - goa-snmp
-      summary: list goa-snmp
-      operationId: goa-snmp#list
+      - goasnmp
+      summary: list goasnmp
+      operationId: goasnmp#list
       responses:
         "200":
           description: OK response.
@@ -21,18 +21,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/HostCollection'
               example:
-              - on_demand: true
+              - on_demand: false
                 public: true
-              - on_demand: true
-                public: true
-              - on_demand: true
+              - on_demand: false
                 public: true
   /hosts/{Hostname}:
     post:
       tags:
-      - goa-snmp
-      summary: add goa-snmp
-      operationId: goa-snmp#add
+      - goasnmp
+      summary: add goasnmp
+      operationId: goasnmp#add
       parameters:
       - name: Hostname
         in: path
@@ -41,8 +39,8 @@ paths:
         schema:
           type: string
           description: Hostname or Ip of Device
-          example: Impedit soluta tempore hic.
-        example: Doloremque qui atque dolorem nulla.
+          example: Sunt dolor maxime porro molestiae.
+        example: Cupiditate tenetur rem laudantium.
       requestBody:
         required: true
         content:
@@ -57,12 +55,12 @@ paths:
                 Public:
                   type: boolean
                   description: Whether or not to walk public tree
-                  example: false
+                  example: true
               example:
                 OnDemand: true
                 Public: false
             example:
-              OnDemand: false
+              OnDemand: true
               Public: false
       responses:
         "200":
@@ -73,13 +71,13 @@ paths:
                 $ref: '#/components/schemas/GoasnmpHost'
               example:
                 on_demand: false
-                public: false
+                public: true
   /openapi.json:
     get:
       tags:
-      - goa-snmp
+      - goasnmp
       summary: Download ./gen/http/openapi.json
-      operationId: goa-snmp#/openapi.json
+      operationId: goasnmp#/openapi.json
       responses:
         "200":
           description: File downloaded
@@ -91,11 +89,11 @@ components:
         on_demand:
           type: boolean
           description: Whether or not Ondemand polling is supported
-          example: false
+          example: true
         public:
           type: boolean
           description: Whether or not to walk public tree
-          example: true
+          example: false
       description: Host to be queried
       example:
         on_demand: false
@@ -105,9 +103,9 @@ components:
       items:
         $ref: '#/components/schemas/GoasnmpHost'
       example:
-      - on_demand: true
+      - on_demand: false
         public: true
-      - on_demand: true
+      - on_demand: false
         public: true
-      - on_demand: true
+      - on_demand: false
         public: true

@@ -16,22 +16,22 @@ paths:
   /hosts:
     get:
       tags:
-      - goa-snmp
-      summary: list goa-snmp
-      operationId: goa-snmp#list
+      - goasnmp
+      summary: list goasnmp
+      operationId: goasnmp#list
       responses:
         "200":
           description: OK response.
           schema:
-            $ref: '#/definitions/GoaSnmpHostResponseCollection'
+            $ref: '#/definitions/GoasnmpHostResponseCollection'
       schemes:
       - http
   /hosts/{Hostname}:
     post:
       tags:
-      - goa-snmp
-      summary: add goa-snmp
-      operationId: goa-snmp#add
+      - goasnmp
+      summary: add goasnmp
+      operationId: goasnmp#add
       parameters:
       - name: Hostname
         in: path
@@ -56,15 +56,15 @@ paths:
         "200":
           description: OK response.
           schema:
-            $ref: '#/definitions/GoaSnmpAddResponseBody'
+            $ref: '#/definitions/GoasnmpAddResponseBody'
       schemes:
       - http
   /openapi.json:
     get:
       tags:
-      - goa-snmp
+      - goasnmp
       summary: Download ./gen/http/openapi.json
-      operationId: goa-snmp#/openapi.json
+      operationId: goasnmp#/openapi.json
       responses:
         "200":
           description: File downloaded
@@ -73,37 +73,7 @@ paths:
       schemes:
       - http
 definitions:
-  GoaSnmpAddResponseBody:
-    title: 'Mediatype identifier: application/vnd.goasnmp.host; view=default'
-    type: object
-    properties:
-      on_demand:
-        type: boolean
-        description: Whether or not Ondemand polling is supported
-        example: true
-      public:
-        type: boolean
-        description: Whether or not to walk public tree
-        example: true
-    description: AddResponseBody result type (default view)
-    example:
-      on_demand: false
-      public: false
-  GoaSnmpHostResponseCollection:
-    title: 'Mediatype identifier: application/vnd.goasnmp.host; type=collection; view=default'
-    type: array
-    items:
-      $ref: '#/definitions/HostResponse'
-    description: ListResponseBody is the result type for an array of HostResponse
-      (default view)
-    example:
-    - on_demand: false
-      public: true
-    - on_demand: false
-      public: true
-    - on_demand: false
-      public: true
-  HostResponse:
+  GoasnmpAddResponseBody:
     title: 'Mediatype identifier: application/vnd.goasnmp.host; view=default'
     type: object
     properties:
@@ -114,8 +84,40 @@ definitions:
       public:
         type: boolean
         description: Whether or not to walk public tree
+        example: false
+    description: AddResponseBody result type (default view)
+    example:
+      on_demand: true
+      public: false
+  GoasnmpHostResponseCollection:
+    title: 'Mediatype identifier: application/vnd.goasnmp.host; type=collection; view=default'
+    type: array
+    items:
+      $ref: '#/definitions/HostResponse'
+    description: ListResponseBody is the result type for an array of HostResponse
+      (default view)
+    example:
+    - on_demand: true
+      public: true
+    - on_demand: true
+      public: true
+    - on_demand: true
+      public: true
+    - on_demand: true
+      public: true
+  HostResponse:
+    title: 'Mediatype identifier: application/vnd.goasnmp.host; view=default'
+    type: object
+    properties:
+      on_demand:
+        type: boolean
+        description: Whether or not Ondemand polling is supported
+        example: true
+      public:
+        type: boolean
+        description: Whether or not to walk public tree
         example: true
     description: Host to be queried (default view)
     example:
       on_demand: false
-      public: false
+      public: true

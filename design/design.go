@@ -6,12 +6,12 @@ import (
 	media_type "github.com/rshade/goasnmp/design/media_type"
 )
 
-var _ = API("goa-snmp", func() {
+var _ = API("goasnmp", func() {
 	Title("Goa SNMP Service")
 	Description("Service for walking snmp trees and converting to http")
 })
 
-var _ = Service("goa-snmp", func() {
+var _ = Service("goasnmp", func() {
 	Description("The goa-snmp service tracks hosts and walks snmp trees")
 
 	Method("list", func() {
